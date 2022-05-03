@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Кредитный калькулятор</title>
+</head>
+<body>
+<div>
+    <ul>
+        <form method="post">
+            <p>Выберите банк</p>
+            <select name="bank">
+                {% for u in banks_base %}
+                <option value={{u}}>
+                    {{u}}
+                </option>
+                {% endfor %}
+            </select>
+            <input class="button" type="submit" value="Отправить"/>
+            <p>Вы выбрали банк - {{bank_value}}</p>
+        </form>
+        <form method="post">
+            <p>Выберите условия</p>
+            <p>Тип платежа;%;период</p>
+            <select name="type">
+                {% for u in payment_type_base %}
+                <option value={{u}}>
+                    {{u}}
+                </option>
+                {% endfor %}
+            </select>
+            <p>Введите сумму платежа</p>
+            <input class="input" name="sum" type="number"/>
+            <input class="button" type="submit" value="Отправить"/>
+            <p>{{payment_type_value}}</p>
+        </form>
+        <table>
+            <tr>
+                <th>Суммарный платеж</th>
+                <td>{{count}}</td>
+            </tr>
+            <tr>
+                <th>Ежемесячный платеж</th>
+                <td>{{d}}</td>
+                <td>{% for u in plata%}
+                    <option value={{u}}>
+                        {{u}}
+                    </option>
+                    {% endfor %}
+                </td>
+            </tr>
+        </table>
+    </ul>
+</div>
+</body>
+</html>
+
+
